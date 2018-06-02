@@ -1,0 +1,11 @@
+for compiling:
+
+avr-gcc -Os -DF_CPU=1000000UL -mmcu=atmega328  -o hello.elf hello.c
+
+teeb ihx faili: 
+avr-objcopy -O ihex -R .eeprom hello.elf hello.ihx
+
+
+sudo avrdude -vv -c arduino -p atmega328p -P /dev/ttyUSB0 -b 57600 -U flash:w:hello.ihx
+
+
